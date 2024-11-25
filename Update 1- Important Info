@@ -1,0 +1,11 @@
+IMPORTANT INFO!!
+Make sure to read over the other files here to get a hang of how to use Github. Remember to create your CLion using this repo so you can automatically commit and stuff without going through a tedius process.
+1.) Dataset - I found a new dataset that works and it is in this repo as a CSV file. We have to code a way to take the info in this file and make it into our Data structure.
+2.) Data structure - I was thinking of changing it into a map. It can be a map holding the game name and the info as a vector, or even an array for constant time. 
+3.) Algorithm - Since we're changing to 2 algorithms, I was thinking either search or sorting algorithms. We could do BFS, or even Dijkstra's vs. Prims and use the prices as the weights (this would change how we 
+store it, and it would look more like what we did for Proj 2). Doesn't seem too bad. We could search based on any of the 16 columns. If we sort, we could do merge sort and quicksort and compare the time both take.
+We would have to bring in the clock for this.
+
+I think this is where we stand right now, doesn't seem too bad. So todos: csv file reading, data structure, alg1, alg2, GUI. I'd be down to do an algorithm and the csv file reading. Let me know y'alls thoughts asap
+pls :)
+Also, check out the milestones so we can organize ourselves and not die last second!!

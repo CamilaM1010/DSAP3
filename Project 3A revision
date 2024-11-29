@@ -1,0 +1,18 @@
+Team Name: The Tryhard Treeo
+Team Members: Camila Menendez, Paola Bechalani, Omar Travieso
+Project Title: Video Game Comparer (IGN based)
+
+1. Problem: In this project, we are aiming to solve the problem that arises from having
+different video games and their ratings/prices scattered throughout the internet. We aim to
+provide the user with the ability to know the highest/lowest scored games as well as the highest or lowest prices. This will help players, investors, and other video game companies effectively obtain information about games in the market without having to go through multiple platforms.
+
+2. Motivation: This is a problem because with so many video game platforms, the people
+in our team have found it hard to find reliable websites providing all the information
+desired in order to make a good purchase. Having a single platform that structurally finds all sorts of games based on their properties would significantly improve decision making.
+
+3. Features: We will know that we solved the problem once the code is fully functional and
+allows for users to be able to get the top X number rated, priced, +** we need to have 7 categories for it to reach 100,000 data points. If the two sorting algorithms successfully sort every category, and we are able to successfully display it, we know that we have reached our goal. The features of our program will allow for users to search games based on genre, name, ranking, platform, global sales, year of release and developer. The algorithms will mostly use pricing and rating as their basis for ranking. For example, there could be an option that says, “what are the top 10 nintendo sellers”, “ what are the top 10 nintendo rated” and so on. The algorithms will sort them based on sales and rating, but the other categories will be used as well!
+
+4. Data: The dataset we will be using is an game dataset (on GitHub)
+
+5. Tools: We plan on using C++ in CLion in order to code this project

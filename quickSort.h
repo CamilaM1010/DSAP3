@@ -4,21 +4,24 @@
 #include <string>
 #ifndef DSAP3_QUICKSORT_H
 #define DSAP3_QUICKSORT_H
+#include <vector>
+#include "videoGames.h"
+#pragma once
 using namespace std;
 
 
 class quickSort {
 public:
-    void quicksort(int array[], int size);
-    void quicksortWords(string array[], int size);
+    void quicksort(vector<int> array, int size, vector<videoGame> data);
+    void quicksortWords(vector<string> array, int size, vector<videoGame> data);
 
 private:
-    void quickSortPriv(int array[], int low, int high);
-    int partition(int array[], int low, int high);
-    void swap(int* a, int* b);
-    void quicksortPrivWords(string array[], int low, int high);
-    int partitionWords(string array[], int low, int high);
-    void swapWords(string* a, string* b);
+    void quickSortPriv(vector<int> array, int low, int high, vector<videoGame> data);
+    int partition(vector<int> array, int low, int high, vector<videoGame> data);
+    void swap(int* a, int* b, videoGame* c, videoGame* d);
+    void quicksortPrivWords(vector<string> array, int low, int high, vector<videoGame> data);
+    int partitionWords(vector<string> array, int low, int high, vector<videoGame> data);
+    void swapWords(string* a, string* b, videoGame* c, videoGame* d);
 };
 
 

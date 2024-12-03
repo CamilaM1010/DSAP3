@@ -7,6 +7,7 @@
 #include <chrono>
 #include <vector>
 #include <iomanip>
+#include <memory>
 
 using namespace std;
 
@@ -19,26 +20,46 @@ int main(){
     else{
         string line; //stores the current line in the file
         bool first_line = true;
+        int count = 0;
         while(getline(file, line)){ //collects the values in every line
             if (first_line){
                 first_line = false;
                 continue;
             }
 
-            stringstream stream(line);
             string curr_data;
             vector<string> row;
 
             //Read the data separated by commas. Empty values seem to be read as ''
-            int i = 0;
-            while(getline(stream, curr_data, ',')){
-                if (curr_data == ""){
-                    curr_data = "N/A";
-                }
+            if (line[0] == '"') {
+                line = line[1, line.size()-1];
+                stringstream stream(line);
+                getline(stream, curr_data, '"');
                 row.push_back(curr_data);
+
+                while(getline(stream, curr_data, ',')){
+                    if (curr_data == ""){
+                        curr_data = "N/A";
+                    }
+                    row.push_back(curr_data);
+                }
+            }
+            else{
+                stringstream stream(line);
+                while(getline(stream, curr_data, ',')){
+                    if (curr_data == ""){
+                        curr_data = "N/A";
+                    }
+                    row.push_back(curr_data);
+                }
+            }
+            if (row.size() != 16){
+                row.push_back("N/A");
             }
             videoGame game(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15]);
             data.push_back(game); //adds the row's values to the vector
+            cout << data[count].getName() << endl;
+            count++;
         }
 
 //        for(int i = 0; i < data.size(); i++){

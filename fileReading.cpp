@@ -83,7 +83,7 @@ int main(){
 
     int sortOption;
     std::cout << "Welcome to the Video Game Analyzer Program, where we analyze a variety of unique video games and compare the data across each of them in order to analyze the video game market and order the data to the user's content!" << std::endl;
-    std::cout << "How would you like to sort the Video Games?\n1.Name\n2.Platform\n3.Year of Release\n4.Genre\n5.Publisher\n6.North American Sales\n7.European Sales\n8.Japanese Sales\n9.Other Sales\n10.Global Sales\n11.Critic Score\n12.Critic Count\n13.User Score\n14.User Count\n15.Developer\n16.Rating\nInput: ";
+    std::cout << "How would you like to sort the Video Games?\n1.Name 2.Platform 3.Year of Release 4.Genre\n5.Publisher 6.North American Sales 7.European Sales 8.Japanese Sales\n9.Other Sales 10.Global Sales 11.Critic Score 12.Critic Count\n13.User Score 14.User Count 15.Developer 16.Rating\nInput: ";
     cin >> sortOption;
 
     if (sortOption >= 1 && sortOption <= 16){

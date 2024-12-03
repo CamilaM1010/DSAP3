@@ -4,19 +4,22 @@
 #include <string>
 #ifndef DSAP3_MERGESORT_H
 #define DSAP3_MERGESORT_H
+#include <vector>
+#include "videoGames.h"
+#pragma once
 using namespace std;
 
 class mergeSort {
     public:
-        void mergeSorter(int arr[], int left, int right);
-        void mergeSorterWords(string arr[], int left, int right);
+        void mergeSorter(vector<int> arr, int left, int right, vector<videoGame> data);
+        void mergeSorterWords(vector<string> &arr, int left, int right, vector<videoGame> &data);
 
 
     private:
-        void mergeSortHelper(int arr[], int left, int right);
-        void merge(int arr[], int left, int mid, int right);
-        void mergeSortHelperWords(string arr[], int left, int right);
-        void mergeWords(string arr[], int left, int mid, int right);
+        void mergeSortHelper(vector<int> arr, int left, int right, vector<videoGame> data);
+        void merge(vector<int> arr, int left, int mid, int right, vector<videoGame> data);
+        void mergeSortHelperWords(vector<string> &arr, int left, int right, vector<videoGame> &data);
+        void mergeWords(vector<string> &arr, int left, int mid, int right, vector<videoGame> &data);
 };
 
 #endif //DSAP3_MERGESORT_H

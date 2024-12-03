@@ -3,10 +3,13 @@
 // using code from Sorting slides by Aman
 //
 #include "mergeSort.h"
+#include <vector>
 #include <iostream>
+#include <string>
+#include <algorithm>
 using namespace std;
 
-void mergeSort::merge(int arr[], int left, int mid, int right) {
+void mergeSort::merge(vector<int> arr, int left, int mid, int right, vector<videoGame> data) {
     // Create X ← arr[left..mid] & Y ← arr[mid+1..right]
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -14,19 +17,28 @@ void mergeSort::merge(int arr[], int left, int mid, int right) {
     int* X = new int[n1];
     int* Y = new int[n2];
 
-    for (int i = 0; i < n1; i++)
+    std::vector<videoGame> test1(n1);
+    std::vector<videoGame> test2(n2);
+
+    for (int i = 0; i < n1; i++) {
         X[i] = arr[left + i];
-    for (int j = 0; j < n2; j++)
+        test1[i] = data[left + i];
+    }
+    for (int j = 0; j < n2; j++) {
         Y[j] = arr[mid + 1 + j];
+        test2[j] = data[mid + 1 + j];
+    }
 
     // Merge the arrays X and Y into arr
     int i = 0, j = 0, k = left;
     while (i < n1 && j < n2) {
         if (X[i] <= Y[j]) {
             arr[k] = X[i];
+            data[k] = test1[i];
             i++;
         } else {
             arr[k] = Y[j];
+            data[k] = test2[j];
             j++;
         }
         k++;
@@ -35,6 +47,7 @@ void mergeSort::merge(int arr[], int left, int mid, int right) {
     // Append remaining elements of X, if any
     while (i < n1) {
         arr[k] = X[i];
+        data[k] = test1[i];
         i++;
         k++;
     }
@@ -42,6 +55,7 @@ void mergeSort::merge(int arr[], int left, int mid, int right) {
     // Append remaining elements of Y, if any
     while (j < n2) {
         arr[k] = Y[j];
+        data[k] = test2[j];
         j++;
         k++;
     }
@@ -50,26 +64,26 @@ void mergeSort::merge(int arr[], int left, int mid, int right) {
     delete[] Y;
 }
 
-void mergeSort::mergeSortHelper(int arr[], int left, int right) {
+void mergeSort::mergeSortHelper(vector<int> arr, int left, int right, vector<videoGame> data) {
         if (left < right) {
         // m is the point where the array is divided into two subarrays
         int mid = left + (right - left) / 2;
 
         // Sort the two halves
-        mergeSortHelper(arr, left, mid);
-        mergeSortHelper(arr, mid + 1, right);
+        mergeSortHelper(arr, left, mid, data);
+        mergeSortHelper(arr, mid + 1, right, data);
 
         // Merge the sorted halves
-        merge(arr, left, mid, right);
+        merge(arr, left, mid, right, data);
     }
 }
 
-void mergeSort::mergeSorter(int arr[], int left, int right) {
+void mergeSort::mergeSorter(vector<int> arr, int left, int right, vector<videoGame> data) {
     //Calls the helper function
-    mergeSortHelper(arr, left, right);
+    mergeSortHelper(arr, left, right, data);
 }
 
-void mergeSort::mergeWords(string *arr, int left, int mid, int right) {
+void mergeSort::mergeWords(vector<string> &arr, int left, int mid, int right, vector<videoGame> &data) {
     // Create X ← arr[left..mid] & Y ← arr[mid+1..right]
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -77,19 +91,28 @@ void mergeSort::mergeWords(string *arr, int left, int mid, int right) {
     string *X = new string[n1];
     string *Y = new string[n2];
 
-    for (int i = 0; i < n1; i++)
+    std::vector<videoGame> test1(n1);
+    std::vector<videoGame> test2(n2);
+
+    for (int i = 0; i < n1; i++) {
         X[i] = arr[left + i];
-    for (int j = 0; j < n2; j++)
+        test1[i] = data[left + i];
+    }
+    for (int j = 0; j < n2; j++) {
         Y[j] = arr[mid + 1 + j];
+        test2[j] = data[mid + 1 + j];
+    }
 
     // Merge the arrays X and Y into arr
     int i = 0, j = 0, k = left;
     while (i < n1 && j < n2) {
         if (X[i] <= Y[j]) {
             arr[k] = X[i];
+            data[k] = test1[i];
             i++;
         } else {
             arr[k] = Y[j];
+            data[k] = test2[j];
             j++;
         }
         k++;
@@ -98,6 +121,7 @@ void mergeSort::mergeWords(string *arr, int left, int mid, int right) {
     // Append remaining elements of X, if any
     while (i < n1) {
         arr[k] = X[i];
+        data[k] = test1[i];
         i++;
         k++;
     }
@@ -105,6 +129,7 @@ void mergeSort::mergeWords(string *arr, int left, int mid, int right) {
     // Append remaining elements of Y, if any
     while (j < n2) {
         arr[k] = Y[j];
+        data[k] = test2[j];
         j++;
         k++;
     }
@@ -113,22 +138,22 @@ void mergeSort::mergeWords(string *arr, int left, int mid, int right) {
     delete[] Y;
 }
 
-void mergeSort::mergeSortHelperWords(string *arr, int left, int right) {
+void mergeSort::mergeSortHelperWords(vector<string> &arr, int left, int right, vector<videoGame> &data) {
     if (left < right) {
         // m is the point where the array is divided into two subarrays
         int mid = left + (right - left) / 2;
 
         // Sort the two halves
-        mergeSortHelperWords(arr, left, mid);
-        mergeSortHelperWords(arr, mid + 1, right);
+        mergeSortHelperWords(arr, left, mid, data);
+        mergeSortHelperWords(arr, mid + 1, right, data);
 
         // Merge the sorted halves
-        mergeWords(arr, left, mid, right);
+        mergeWords(arr, left, mid, right, data);
     }
 }
 
-void mergeSort::mergeSorterWords(string *arr, int left, int right) {
+void mergeSort::mergeSorterWords(vector<string> &arr, int left, int right, vector<videoGame> &data) {
     //calls helper function
-    mergeSortHelperWords(arr, left, right);
+    mergeSortHelperWords(arr, left, right, data);
 }
 

@@ -3,6 +3,9 @@
 //
 
 #include <iostream>
+#include <string>
+#include <algorithm>
+#pragma once
 using namespace std;
 
 class videoGame {
@@ -24,6 +27,7 @@ private:
     string developer;
     string rating;
 public:
+    videoGame();
     videoGame(string name, string platform, string yearOfRelease, string genre, string publisher, string na_sales, string eu_sales, string jp_sales, string other_sales, string global_sales, string criticScore, string criticCount, string userScore, string userCount, string developer, string rating);
     string getName();
     string getPlatform();

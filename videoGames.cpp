@@ -6,6 +6,24 @@
 #include "videoGames.h"
 using namespace std;
 
+videoGame::videoGame(){
+    name = "0";
+    platform = "0";
+    yearOfRelease = "0";
+    genre = "0";
+    publisher = "0";
+    na_sales = "0";
+    eu_sales = "0";
+    jp_sales = "0";
+    other_sales = "0";
+    global_sales = "0";
+    criticScore = "0";
+    criticCount = "0";
+    userScore = "0";
+    userCount = "0";
+    developer = "0";
+    rating = "0";
+}
 videoGame::videoGame(string name, string platform, string yearOfRelease, string genre, string publisher, string na_sales, string eu_sales, string jp_sales, string other_sales, string global_sales, string criticScore, string criticCount, string userScore, string userCount, string developer, string rating){
     this->name = name;
     this->platform = platform;
@@ -88,3 +106,4 @@ string videoGame::getDeveloper(){
 string videoGame::getRating(){
     return rating;
 }
+

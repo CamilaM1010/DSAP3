@@ -14,6 +14,7 @@ using namespace std;
 int main(){
     vector<videoGame> data; //stores each data as a vector, subject to change
     ifstream file("Video_Games.csv");
+    int col_count;
     if (!file.is_open()){ //Checks if file isn't existing/open
         cout << "File failed to open." << endl;
     }
@@ -21,55 +22,65 @@ int main(){
         string line; //stores the current line in the file
         bool first_line = true;
         int count = 0;
-        while(getline(file, line)){ //collects the values in every line
-            if (first_line){
+        while(getline(file, line)) { //collects the values in every line
+            if (first_line) {
                 first_line = false;
                 continue;
             }
 
+            bool in_quotes = false;
             string curr_data;
+            string field;
             vector<string> row;
+            stringstream stream(line);
 
             //Read the data separated by commas. Empty values seem to be read as ''
-            if (line[0] == '"') {
-                line = line[1, line.size()-1];
-                stringstream stream(line);
-                getline(stream, curr_data, '"');
-                row.push_back(curr_data);
+            while (getline(stream, field, ',')) {
+                if(!in_quotes){
+                    if(!field.empty() && field[0] == '"'){
+                        in_quotes = true;
+                        curr_data = field.substr(1);
+                    }
+                    else{
+                        if (field == "") {
+                            curr_data = "N/A";
+                        }
+                        else{
+                            curr_data = field;
+                        }
 
-                while(getline(stream, curr_data, ',')){
-                    if (curr_data == ""){
-                        curr_data = "N/A";
+                        row.push_back(curr_data);
                     }
-                    row.push_back(curr_data);
+                }
+                else{
+                    if(!field.empty() && field[field.size() - 1] == '"'){
+                        in_quotes = false;
+                        curr_data += "," + field.substr(0, field.size() - 1);
+                        row.push_back(curr_data);
+                        curr_data.clear();
+                    }
+                    else{
+                        curr_data += "," + field;
+                    }
                 }
             }
-            else{
-                stringstream stream(line);
-                while(getline(stream, curr_data, ',')){
-                    if (curr_data == ""){
-                        curr_data = "N/A";
-                    }
-                    row.push_back(curr_data);
-                }
-            }
-            if (row.size() != 16){
-                row.push_back("N/A");
+            curr_data = field;
+
+            if (curr_data == "") {
+                curr_data = "N/A";
+                row.push_back(curr_data);
             }
             videoGame game(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15]);
             data.push_back(game); //adds the row's values to the vector
-            cout << data[count].getName() << endl;
             count++;
         }
-
-//        for(int i = 0; i < data.size(); i++){
-//            for (int j = 0; j < data[i].size(); j++){
-//                cout << data[i][j] << ";";
-//            }
-//            cout << endl;
-//        }
         file.close();
     }
+
+//    for(int i = 0; i < data.size(); i++){
+//        cout << data[i].getName() << ";" << data[i].getPlatform() << ";" << data[i].getYear() << ";" << data[i].getGenre() << ";" << data[i].getPublisher() << ";" << data[i].getNAS() << ";" << data[i].getEUS() << ";" << data[i].getJPS() << ";" << data[i].getOTS() << ";" << data[i].getGBS() << ";" << data[i].getCriticS() << ";" << data[i].getCriticC() << ";" << data[i].getUserS() << ";" << data[i].getUserC() << ";" << data[i].getDeveloper() << ";" << data[i].getRating() << endl;
+//    }
+
     int sortOption;
     std::cout << "Welcome to the Video Game Analyzer Program, where we analyze a variety of unique video games and compare the data across each of them in order to analyze the video game market and order the data to the user's content!" << std::endl;
     std::cout << "How would you like to sort the Video Games?\n1.Name\n2.Platform\n3.Year of Release\n4.Genre\n5.Publisher\n6.North American Sales\n7.European Sales\n8.Japanese Sales\n9.Other Sales\n10.Global Sales\n11.Critic Score\n12.Critic Count\n13.User Score\n14.User Count\n15.Developer\n16.Rating\nInput: ";
@@ -133,6 +144,8 @@ int main(){
         mergeSort sorter1;
         quickSort sorter2;
 
+        vector<videoGame> data2;
+        data2 = data;
         cout << "Does Merge" << endl;
         const clock_t clock_merge_start = clock();
         sorter1.mergeSorterWords(games, 0, size - 1, data);
@@ -141,7 +154,7 @@ int main(){
 
         cout << "Does Quick" << endl;
         const clock_t clock_quick_start = clock();
-        sorter2.quicksortWords(games2, games2.size(), data);
+        sorter2.quicksortWords(games2, games2.size(), data2);
         const clock_t clock_quick_end = clock();
         cout << "Does Quicke" << endl;
 

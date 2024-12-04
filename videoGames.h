@@ -1,7 +1,3 @@
-//
-// Created by ojtra on 11/30/2024.
-//
-
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -10,9 +6,10 @@ using namespace std;
 
 class videoGame {
 private:
+    //private attributes of the videoGame class
     string name;
     string platform;
-    string yearOfRelease;
+    string year_of_release;
     string genre;
     string publisher;
     string na_sales;
@@ -20,15 +17,16 @@ private:
     string jp_sales;
     string other_sales;
     string global_sales;
-    string criticScore;
-    string criticCount;
-    string userScore;
-    string userCount;
+    string critic_score;
+    string critic_count;
+    string user_score;
+    string user_count;
     string developer;
     string rating;
 public:
+    //Public functions of the class, such as parameterized constructor and getter functions
     videoGame();
-    videoGame(string name, string platform, string yearOfRelease, string genre, string publisher, string na_sales, string eu_sales, string jp_sales, string other_sales, string global_sales, string criticScore, string criticCount, string userScore, string userCount, string developer, string rating);
+    videoGame(string name, string platform, string year_of_release, string genre, string publisher, string na_sales, string eu_sales, string jp_sales, string other_sales, string global_sales, string critic_score, string critic_count, string user_score, string user_count, string developer, string rating);
     string getName();
     string getPlatform();
     string getYear();

@@ -111,14 +111,16 @@ int main(){
             break;
         }
 
-        if(sort_option > 11 || sort_option < 1)
+        if(sort_option > 11 || sort_option < 1){ //Invalid nums
+            cout << "Invalid input entered. Please try again" << endl << endl;
+            continue;
+        }
 
         if (sort_option >= 1 && sort_option <= 11) { //Making sure the option chosen is valid
             vector<string> stringGames;
             vector<float> floatGames;
 
-            for (int i = 0; i <
-                            data.size(); i++) { //For loop stores all the values to be sorted into another vector to sort them quicker
+            for (int i = 0; i < data.size(); i++) { //For loop stores all the values to be sorted into another vector to sort them quicker
                 if (sort_option == 1) {
                     stringGames.push_back(data[i].getName()); //Stores all the names in a vector
                 } else {
@@ -200,7 +202,7 @@ int main(){
                     } else if (sort_option == 10) { //Stores the user score in a vector as floats
                         value = data[i].getUserS();
 
-                        if (value == "N/A") {
+                        if (value == "N/A" || value == "tbd") {
                             value = "-1";
                         }
 
@@ -288,6 +290,11 @@ int main(){
                     end = stoi(cap_num); //Set the cap number ready for the for loop
                 }
 
+                if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    cout << "No games shown." << endl;
+                    continue;
+                }
+
                 for (int i = 0; i < end; i++) { //Display the games using the cap number
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
@@ -320,6 +327,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -349,6 +361,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -388,6 +405,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -417,6 +439,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -456,6 +483,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -485,6 +517,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -524,6 +561,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -553,6 +595,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -592,6 +639,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -621,6 +673,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -660,6 +717,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -689,6 +751,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -728,6 +795,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -757,6 +829,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -796,6 +873,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -825,6 +907,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -864,6 +951,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -893,6 +985,11 @@ int main(){
                         ind = stoi(cap_num);
                     } else {
                         ind = end;
+                    }
+
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
                     }
 
                     for (int i = 0; i < ind; i++) {
@@ -932,6 +1029,11 @@ int main(){
                         ind_sub = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = end;
                          i > end - ind_sub; i--) { //Backwards for loop to give reverse order of stored values
                         if (floatGames[i] == -1) { //Ignores empty values
@@ -963,6 +1065,11 @@ int main(){
                         ind = end;
                     }
 
+                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                        cout << "No games shown." << endl;
+                        continue;
+                    }
+
                     for (int i = 0; i < ind; i++) {
                         if (floatGames[i] == -1) { //Ignores empty values
                             ind = ind + 1;
@@ -992,14 +1099,6 @@ int main(){
             cout << fixed << setprecision(2) << "CPU time used doing QuickSort: "
                  << 1000.0 * (quickTime) / CLOCKS_PER_SEC << " ms\n";
         }
-//        else {
-//            //Output for invalid options
-//            cout << "Invalid option chosen!\n"
-//                         "- If you would like to try again, enter anything."
-//                         "- If you would like to quit, enter -1" << endl;
-//            cin >> restart;
-//
-//        }
     }
     return 0;
 }

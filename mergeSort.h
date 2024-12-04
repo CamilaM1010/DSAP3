@@ -11,13 +11,13 @@ using namespace std;
 
 class mergeSort {
     public:
-        void mergeSorter(vector<int> arr, int left, int right, vector<videoGame> data);
+        void mergeSorter(vector<float> values, int left, int right, vector<videoGame> data);
         void mergeSorterWords(vector<string> &arr, int left, int right, vector<videoGame> &data);
 
 
     private:
-        void mergeSortHelper(vector<int> arr, int left, int right, vector<videoGame> data);
-        void merge(vector<int> arr, int left, int mid, int right, vector<videoGame> data);
+        void mergeSortHelper(vector<float> values, int left, int right, vector<videoGame> data);
+        void merge(vector<float> values, int left, int mid, int right, vector<videoGame> data);
         void mergeSortHelperWords(vector<string> &arr, int left, int right, vector<videoGame> &data);
         void mergeWords(vector<string> &arr, int left, int mid, int right, vector<videoGame> &data);
 };

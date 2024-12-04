@@ -5,39 +5,39 @@
 #include "quickSort.h"
 #include <vector>
 
-void quickSort::quicksort(vector<int> array, int size, vector<videoGame> &data) {
-    quickSortPriv(array, 0, size - 1, data);
+void quickSort::quicksort(vector<float> values, int size, vector<videoGame> &data) {
+    quickSortPriv(values, 0, size - 1, data);
 }
 
-void quickSort::quickSortPriv(vector<int> array, int low, int high, vector<videoGame> &data) {
+void quickSort::quickSortPriv(vector<float> values, int low, int high, vector<videoGame> &data) {
     if (low < high) {
-        int pivot = partition(array, low, high, data);
-        quickSortPriv(array, low, pivot - 1, data);
-        quickSortPriv(array, pivot + 1, high, data);
+        int pivot = partition(values, low, high, data);
+        quickSortPriv(values, low, pivot - 1, data);
+        quickSortPriv(values, pivot + 1, high, data);
     }
 }
 
-int quickSort::partition(vector<int> array, int low, int high, vector<videoGame> &data) {
-    int pivot = array[low];
+int quickSort::partition(vector<float> values, int low, int high, vector<videoGame> &data) {
+    int pivot = values[low];
     int up = low, down = high;
 
     while (up < down) {
-        while (up < high && array[up] <= pivot) {
+        while (up < high && values[up] <= pivot) {
             up++;
         }
-        while (down > low && array[down] > pivot) {
+        while (down > low && values[down] > pivot) {
             down--;
         }
         if (up < down) {
-            swap(&array[up], &array[down], &data[up], &data[down]);
+            swap(&values[up], &values[down], &data[up], &data[down]);
         }
     }
-    swap(&array[low], &array[down], &data[low], &data[down]);
+    swap(&values[low], &values[down], &data[low], &data[down]);
     return down;
 }
 
-void quickSort::swap(int *a, int* b, videoGame* c, videoGame* d) {
-    int temp = *a;
+void quickSort::swap(float *a, float* b, videoGame* c, videoGame* d) {
+    float temp = *a;
     *a = *b;
     *b = temp;
 

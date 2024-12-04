@@ -633,7 +633,7 @@ int main(){
              << 1000.0 * (quickTime) / CLOCKS_PER_SEC << " ms\n";
     }
     else{
-        std::cout << "Invalid option chosen! Please try again." << std::endl;
+        std::cout << "Invalid option chosen! Press 1 to try again." << std::endl;
         return 0;
     }
     return 0;

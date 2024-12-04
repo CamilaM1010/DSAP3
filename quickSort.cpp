@@ -1,3 +1,7 @@
+//
+// Created by paobe on 11/29/2024.
+//
+
 #include "quickSort.h"
 #include <vector>
 
@@ -14,7 +18,7 @@ void quickSort::quickSortPriv(vector<float> &values, int low, int high, vector<v
 }
 
 int quickSort::partition(vector<float> &values, int low, int high, vector<videoGame> &data) {
-    int pivot = values[low];
+    float pivot = values[low];
     int up = low, down = high;
 
     while (up < down) {

@@ -82,7 +82,7 @@ int main(){
 
     int sort_option;
     char cap_games;
-    string cap_num = "-1";
+    string cap_num = "0";
     string sort_order;
     std::cout << "-----------============================o0()0o==============================-----------\n"
                  "Welcome to the Video Game Analyzer Program! We analyze a variety of unique video games\n"
@@ -231,7 +231,9 @@ int main(){
             quick_sorter.quicksort(floatGames2, size, data2);
             const clock_t clock_quick_end = clock();
             cout << "Quick sorted" << endl;
-
+            for (int i = 0; i < floatGames2.size(); i++){
+                cout << floatGames2[i] << " " << data2[i].getJPS() << endl;
+            }
 
             mergeTime = clock_merge_end - clock_merge_start;
             quickTime = clock_quick_end - clock_quick_start;
@@ -251,7 +253,7 @@ int main(){
         if(sort_option == 1){
             cout << "Here are the games sorted by their names in alphabetical order!" << endl;
             int end = stringGames.size();
-            if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
+            if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
                 end = stoi(cap_num);
             }
 
@@ -267,19 +269,27 @@ int main(){
             }
             cout << "============------------__________------------============" << endl;
         }
-        else if(sort_option == 2){ //TODO FIX LOOp
+        else if(sort_option == 2){ //TODO IMPLEMENT
             cout << "Would you like to sort from oldest to newest or newest to oldest?" << endl;
             cout << "Enter 'nto' for new to old, anything else for old to new: " << endl;
             cin >> sort_order;
 
             if(sort_order == "nto"){
                 cout << "Here are the games sorted by their year of release, newest to oldest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = end; i > end - ind_sub; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -293,12 +303,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their year of release, oldest to newest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -318,12 +336,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their North American sales, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = end; i > end - ind_sub; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -337,12 +363,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their North American sales, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -362,12 +396,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their European sales, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = end; i > end - ind_sub; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -381,12 +423,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their European sales, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -406,12 +456,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their Japanese sales, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = end; i > end - ind_sub; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -425,12 +483,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their Japanese sales, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -450,12 +516,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their other sales, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end && i >= 0 && i >= 0 && i >= 0; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -469,12 +543,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their other sales, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -494,12 +576,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their global sales, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = end; i > end - ind_sub; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -513,12 +603,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their global sales, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -538,12 +636,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their critics score, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = end; i > end - ind_sub; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -557,12 +663,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their critics score, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -582,12 +696,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their critic count, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = end; i > end - ind_sub; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -601,12 +723,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their critic count, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -626,12 +756,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their user score, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
-                for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                for (int i = end; i > end - ind_sub; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -645,12 +783,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their user score, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -670,12 +816,20 @@ int main(){
 
             if(sort_order == "gtl"){
                 cout << "Here are the games sorted by their user count, greatest to least!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind_sub;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind_sub = stoi(cap_num);
+                }
+                else{
+                    ind_sub = end;
                 }
 
                 for (int i = floatGames.size()-1; i > floatGames.size() - 1-end; i--){
+                    if (floatGames[i] == -1){
+                        end = end - 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
@@ -689,12 +843,20 @@ int main(){
             }
             else{
                 cout << "Here are the games sorted by their user count, least to greatest!" << endl;
-                int end = floatGames.size();
-                if(stoi(cap_num) >= 0 && stoi(cap_num) <= end){
-                    end = stoi(cap_num);
+                int end = floatGames.size() - 1;
+                int ind;
+                if(stoi(cap_num) > 0 && stoi(cap_num) <= end){
+                    ind = stoi(cap_num);
+                }
+                else{
+                    ind = end;
                 }
 
-                for (int i = 0; i < end; i++){
+                for (int i = 0; i < ind; i++){
+                    if(floatGames[i] == -1){
+                        ind = ind + 1;
+                        continue;
+                    }
                     cout << "============------------__________------------============" << endl;
                     cout << "Game " << counter << ": " << data[i].getName() << endl;
                     cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;

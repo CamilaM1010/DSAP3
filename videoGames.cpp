@@ -1,7 +1,3 @@
-//
-// Created by ojtra on 11/30/2024.
-//
-
 #include <iostream>
 #include "videoGames.h"
 using namespace std;

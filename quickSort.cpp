@@ -1,7 +1,3 @@
-//
-// Created by paobe on 11/29/2024.
-//
-
 #include "quickSort.h"
 #include <vector>
 

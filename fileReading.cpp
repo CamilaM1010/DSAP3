@@ -267,7 +267,7 @@ int main(){
             }
             cout << "============------------__________------------============" << endl;
         }
-        else if(sort_option == 2){ //TODO IMPLEMENT
+        else if(sort_option == 2){ //TODO FIX LOOp
             cout << "Would you like to sort from oldest to newest or newest to oldest?" << endl;
             cout << "Enter 'nto' for new to old, anything else for old to new: " << endl;
             cin >> sort_order;

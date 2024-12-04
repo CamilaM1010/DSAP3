@@ -10,7 +10,7 @@
 #pragma once
 using namespace std;
 
-
+// the quickSort class implements the QuickSort algorithm
 class quickSort {
 public:
     void quicksort(vector<float> &values, int size, vector<videoGame> &data);

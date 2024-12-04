@@ -285,9 +285,9 @@ int main(){
 
             while(cin.fail()){
                 cout << "Invalid input. Please try again." << endl;
+                cout << "New value:";
                 cin.clear();
                 cin.ignore();
-                cout << "New value:";
                 cin >> cap_num;
             }
 

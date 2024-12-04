@@ -13,15 +13,15 @@ using namespace std;
 
 class quickSort {
 public:
-    void quicksort(vector<float> values, int size, vector<videoGame> &data);
-    void quicksortWords(vector<string> array, int size, vector<videoGame> &data);
+    void quicksort(vector<float> &values, int size, vector<videoGame> &data);
+    void quicksortWords(vector<string> &array, int size, vector<videoGame> &data);
 
 private:
-    void quickSortPriv(vector<float> values, int low, int high, vector<videoGame> &data);
-    int partition(vector<float> values, int low, int high, vector<videoGame> &data);
+    void quickSortPriv(vector<float> &values, int low, int high, vector<videoGame> &data);
+    int partition(vector<float> &values, int low, int high, vector<videoGame> &data);
     void swap(float* a, float* b, videoGame* c, videoGame* d);
-    void quicksortPrivWords(vector<string> array, int low, int high, vector<videoGame> &data);
-    int partitionWords(vector<string> array, int low, int high, vector<videoGame> &data);
+    void quicksortPrivWords(vector<string> &array, int low, int high, vector<videoGame> &data);
+    int partitionWords(vector<string> &array, int low, int high, vector<videoGame> &data);
     void swapWords(string* a, string* b, videoGame* c, videoGame* d);
 };
 

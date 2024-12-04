@@ -7,19 +7,19 @@ Link to Video demo (See below)
 Extended and Refined Proposal [Suggested 2 Pages]
 Problem: What problem are we trying to solve?
 Motivation: Why is this a problem? 
-Features implemented
+Features implemented ** should be good now
 Description of data
 Tools/Languages/APIs/Libraries used
 Algorithms implemented
-Additional Data Structures/Algorithms used
+Additional Data Structures/Algorithms used ** should be good now
 Distribution of Responsibility and Roles: Who did what?
 Analysis [Suggested 1.5 Pages]
 Any changes the group made after the proposal? The rationale behind the changes.
 Big O worst case time complexity analysis of the major functions/features you implemented
 Reflection [Suggested 1-1.5 Page]
-As a group, how was the overall experience for the project?
-Did you have any challenges? If so, describe.
-If you were to start once again as a group, any changes you would make to the project and/or workflow?
+As a group, how was the overall experience for the project? ** should be good now
+Did you have any challenges? If so, describe. ** should be good now
+If you were to start once again as a group, any changes you would make to the project and/or workflow? ** should be good now
 Comment on what each of the members learned through this process.
 References 
 The maximum page limit and font size [12 pt] is strictly enforced. You will lose 20% points for each additional page you use. The page limit includes headings, references, etc. 
@@ -36,14 +36,14 @@ Link to GitHub repo: https://github.com/CamilaM1010/DSAP3.git
 Link to Video demo: **have to make video
 
 
-Extended and Refined Proposal: **should look over as we finish. This meets the two page req
+Extended and Refined Proposal: 
 
 Problem: In this project, we aim to address the challenge of fragmented information about video games, including their ratings and sales, scattered across various platforms and websites. This scattered data makes it difficult for users, such as players, investors, or game developers, to find and compare information on games efficiently. Our goal is to create a comprehensive solution that consolidates this information, allowing users to easily identify the highest and lowest-rated games, as well as the most and least expensive ones. This platform will facilitate the decision-making process, making it easier to analyze the video game market without having to navigate multiple websites or sources.
 
 Motivation: The motivation for this project stems from the team’s own experience and frustrations with the current state of video game information. With the abundance of gaming platforms and websites, it can be time-consuming and difficult to find a reliable source that provides all the necessary data for making informed decisions. Whether it's identifying the best-rated games or evaluating sales figures, users often struggle to find a single platform that offers these insights in an organized and user-friendly manner. By addressing this issue, our project seeks to improve how users access and interact with video game data, enabling better decision-making for consumers, investors, and companies altogether.
 
-Features Implemented: The primary objective of this project was to create a platform that consolidates scattered video game data from various sources, allowing users to find relevant information efficiently. We will know our project is fully functional when the user can gather the data they want from our database without any failures. One of the key features implemented was the ability to sort and filter games based on specific criteria, such as genre, name, ranking, platform, global sales, year of release, and developer. The platform is designed to help users easily identify the highest-rated and highest-priced games by leveraging sorting algorithms that rank games based on pricing and ratings.
-To meet the goal of analyzing 100,000 data points, the program includes functionality to display the top-rated or top-selling games for various categories. Users can search for games based on specific characteristics, such as the "top 10 Nintendo sellers" or the "top 10 highest-rated Nintendo games." The sorting algorithms, Quicksort and Mergesort, are used to arrange the data in order of sales and ratings, with additional categories being incorporated into the sorting process as needed. This allows for comprehensive insights into the market, making it easier for players, investors, and game developers to make informed decisions.
+Features Implemented: The primary objective of this project was to create a platform that consolidates scattered video game data from various sources, allowing users to find relevant information efficiently. We will know our project is fully functional when the user can gather the data they want from our database without any failures. One of the key features implemented was the ability to sort and filter games based on specific criteria, such as name, year of release, sales for different countries, critic score, critic count, user score, and user count. At the beginning, the user is welcomed to the page and prompted to choose from what category they would like to see sorted. This is followed by asking if they would like to cap the amount of responses. For example, if a user inputs 10, the top 10 of the category they chose will be displayed. When sorting by names it will be alphabetical, but when sorting by the other numerical categories, the user will be able to choose whether they want oldest to newest, for years, or least to greatest or greatest to least for the other options. 
+To meet the goal of analyzing 100,000 data points, the program uses over 7 of the categories and displays all 16 of its attributes. Users can search for games based on specific characteristics, such as the "top 10 sellers in Japan" or the "top 10 highest-rated Nintendo games." The sorting algorithms, Quicksort and Mergesort, are used to arrange the data in order of sales and ratings, with additional categories being incorporated into the sorting process as needed. This allows for comprehensive insights into the market, making it easier for players, investors, and game developers to make informed decisions.
 
 Description of Data: To ensure the reliability of the platform, the dataset includes over 100,000 entries, covering a wide variety of video games. The dataset includes the following information about each video game: name, platform, release year, genre, publisher, sales by region, global sales, critic score, critic count, user score, user count, developer, and rating. There are 16,720 different video games listed which gives great variety and utility to this dataset. 
 
@@ -59,6 +59,7 @@ Paola: Focused on implementing Quicksort and Mergesort, refactoring part 3a of t
 Omar: Developed the VideoGame class and designed the Graphical User Interface (GUI).
 
 We were all equally responsible for brainstorming project ideas, writing our reflections on the report, and being supportive team members if anyone needed extra help.
+
 Analysis 
 
 Any changes the group made after the proposal? The rationale behind the changes:
@@ -78,21 +79,21 @@ Reflection:
 
 As a group, how was the overall experience for the project?
 At the start of the project, we were uncertain about the direction, but as we progressed, communication improved, and we aligned on our objectives. Regular check-ins kept us on track, and we broke down tasks clearly, ensuring everyone knew their responsibilities.
-Starting early allowed us to manage our time well and address issues as they arose. We divided coding tasks based on individual strengths, which made the work more efficient, and timely communication helped us integrate our efforts smoothly.
-What worked well was the transparency within the team. Everyone understood their strengths and areas for growth, enabling us to support each other and tackle challenges effectively. This approach led to a successful, on-time project completion with minimal stress.
+What worked well was the transparency within the team. Everyone understood their strengths and areas for growth, enabling us to support each other and tackle challenges effectively. Although there were times of stress, we talked it out and supported each other which allowed for us to finish the project. We encountered challenges but also saw this as a learning opportunity in both teamwork and programming. 
 
 Did you have any challenges? If so, describe.
-While we didn’t face many significant challenges as a team, one issue that stood out occurred at the start of the project. Initially, we found ourselves a bit confused because our original proposal didn’t align well with the project’s goals; we were attempting to compare an algorithm to a data structure, which didn’t make sense. This caused some initial scrambling as we tried to clarify our direction. However, once we fully understood the objectives, everything fell into place, and we were able to proceed smoothly.
+We faced the challenges as we worked on the GUI since it was a bigger task than we had envisioned because there were more technical tasks such as asking the user if they would like to see everything that had been sorted or just a specific number. The team had to put extra time on reading the csv files since the reading we had originally done was causing some issues. Additionally, when we were working with our sorts, we noticed that it was taking in floats incorrectly so the sorting was inaccurate which took us some time to figure out. One of the biggest challenges we faced was that when we stored the information in the VideoGame class, we kept getting a memory error because some of the entries on the csv file were empty. However, we were able to solve it by adding an edge case handler.  
 
 If you were to start once again as a group, any changes you would make to the project and/or workflow?
-If we got the opportunity to restart this project, we would have planned the objective more thoroughly from the beginning since that is what caused our group the biggest setbacks. This would have given us more time to create a better GUI and more features to make the user interface even more interactive. We believe that this platform could actually be helpful for those looking to learn more about video games and their market. 
+If we got the opportunity to restart this project, we would have planned the objective more thoroughly from the beginning since that is what caused our group the biggest setbacks. This would have given us more time to focus on the GUI and have clearer expectations on what we wanted to accomplish in our platform. We would have also taken more time to understand how we wanted to sort the data since we had to change from arrays to vectors and the integers to floats. Other than those minor changes, we think this project was essential to our learning.
 
 Comment on what each of the members learned through this process. 
-Paola: Throughout this project, I learned the value of collaboration in coding. While I’ve had some negative group experiences in the past, this project highlighted how working together can exponentially improve the outcome. After coding the sorting methods, I also have a better understanding of how sorting works and the algorithms that need to be applied. Additionally, I got more experience with using GitHub as it is a platform I do not usually use. After this project, I am confident that not only am I a better programmer but also a better teammate. 
+Paola: Throughout this project, I learned the value of collaboration in coding. While I’ve had some negative group experiences in the past, this project highlighted how working together can exponentially improve the outcome. After coding the sorting methods, I also have a better understanding of how sorting works and the algorithms that need to be applied and saw how big the time complexity variants affect how fast a program runs. Additionally, I got more experience with using GitHub as it is a platform I do not usually use. After this project, I am confident that not only am I a better programmer but also a better teammate. 
 
 Camila: Throughout the completion of this project, I was able to learn a variety of things. For one, I got much more accommodated with GitHub, a platform that I know will be essential in the working environment in the future. I was also able to learn collaboration skills when it comes to coding. My group and I were able to split tasks depending on our strong suits and work accordingly in an effective manner. I also learned a lot about file reading and finding useful datasets for a project, something that I had not done in years and needed a bit of a recap on.
 
 Omar: 
+
 
 References:
 
@@ -100,3 +101,4 @@ Kapoor, A. (2024, August 9). Sorting [PowerPoint slides]
 std::clock - cppreference.com
 Video-Game-Sales-Dataset/Video_Games.csv at main · Bakikhan/Video-Game-Sales-Dataset
 parsing - How can I read and parse CSV files in C++? - Stack Overflow
+

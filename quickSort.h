@@ -20,7 +20,7 @@ private:
     void quickSortPriv(vector<float> &values, int low, int high, vector<videoGame> &data);
     int partition(vector<float> &values, int low, int high, vector<videoGame> &data);
     void swap(float* a, float* b, videoGame* c, videoGame* d);
-    void quicksortPrivWords(vector<string> &array, int low, int high, vector<videoGame> &data);
+    void quickSortPrivWords(vector<string> &array, int low, int high, vector<videoGame> &data);
     int partitionWords(vector<string> &array, int low, int high, vector<videoGame> &data);
     void swapWords(string* a, string* b, videoGame* c, videoGame* d);
 };

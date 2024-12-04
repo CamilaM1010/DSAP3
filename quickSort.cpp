@@ -56,16 +56,16 @@ void quickSort::swap(float *a, float* b, videoGame* c, videoGame* d) {
 
 //function that sorts a vector of strings and updates the videoGame vector
 void quickSort::quicksortWords(vector<string> &array, int size, vector<videoGame> &data) {
-    quicksortPrivWords(array, 0, size - 1, data);
+    quickSortPrivWords(array, 0, size - 1, data);
 }
 
 // recursively sorts strings using quickSort
-void quickSort::quicksortPrivWords(vector<string> &array, int low, int high, vector<videoGame> &data) {
+void quickSort::quickSortPrivWords(vector<string> &array, int low, int high, vector<videoGame> &data) {
     if (low < high) {
         int pivot = partitionWords(array, low, high, data);// chooses the pivot used in quickSort
         // recursively sorts the elements by putting them before or after the pivot
-        quicksortPrivWords(array, low, pivot - 1, data);
-        quicksortPrivWords(array, pivot + 1, high, data);
+        quickSortPrivWords(array, low, pivot - 1, data);
+        quickSortPrivWords(array, pivot + 1, high, data);
     }
 }
 

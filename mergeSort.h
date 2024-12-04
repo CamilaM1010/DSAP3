@@ -9,17 +9,18 @@
 #pragma once
 using namespace std;
 
+// the mergeSort class implements the MergeSort algorithm
 class mergeSort {
-    public:
-        void mergeSorter(vector<float> &values, int left, int right, vector<videoGame> &data);
-        void mergeSorterWords(vector<string> &arr, int left, int right, vector<videoGame> &data);
+public:
+    void mergeSorter(vector<float> &values, int left, int right, vector<videoGame> &data);
+    void mergeSorterWords(vector<string> &arr, int left, int right, vector<videoGame> &data);
 
 
-    private:
-        void mergeSortHelper(vector<float> &values, int left, int right, vector<videoGame> &data);
-        void merge(vector<float> &values, int left, int mid, int right, vector<videoGame> &data);
-        void mergeSortHelperWords(vector<string> &arr, int left, int right, vector<videoGame> &data);
-        void mergeWords(vector<string> &arr, int left, int mid, int right, vector<videoGame> &data);
+private:
+    void mergeSortHelper(vector<float> &values, int left, int right, vector<videoGame> &data);
+    void merge(vector<float> &values, int left, int mid, int right, vector<videoGame> &data);
+    void mergeSortHelperWords(vector<string> &arr, int left, int right, vector<videoGame> &data);
+    void mergeWords(vector<string> &arr, int left, int mid, int right, vector<videoGame> &data);
 };
 
 #endif //DSAP3_MERGESORT_H

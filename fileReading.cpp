@@ -82,7 +82,6 @@ int main(){
 
     int sort_option; //Stores the user's desired sorting category
     char cap_games; //Stores a y or Y if a user wants to cap the number of games shown
-    string cap_num = "0"; //Stores the cap number if a user wants to show a capped number of games
     string sort_order; //Stores if the user wants numerical values sorted from greatest to least or backwards
     while(sort_option != -1) {
         std::cout << "-----------============================o0()0o==============================-----------\n"
@@ -221,6 +220,7 @@ int main(){
                 }
             }
 
+            int cap_num = data.size(); //Stores the cap number if a user wants to show a capped number of games
 
             vector<string> stringGames2;
             vector<float> floatGames2;
@@ -283,14 +283,22 @@ int main(){
                 cin >> cap_num;
             }
 
+            while(cin.fail()){
+                cout << "Invalid input. Please try again." << endl;
+                cin.clear();
+                cin.ignore();
+                cout << "New value:";
+                cin >> cap_num;
+            }
+
             if (sort_option == 1) {
                 cout << "Here are the games sorted by their names in alphabetical order!" << endl;
                 int end = stringGames.size();
-                if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                    end = stoi(cap_num); //Set the cap number ready for the for loop
+                if (cap_num > 0 && cap_num <= end) {
+                    end = cap_num; //Set the cap number ready for the for loop
                 }
 
-                if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                if(cap_num == 0){ //Cap number 0 shows no games
                     cout << "No games shown." << endl;
                     continue;
                 }
@@ -321,13 +329,13 @@ int main(){
                     cout << "Here are the games sorted by their year of release, newest to oldest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -357,13 +365,13 @@ int main(){
                     cout << "Here are the games sorted by their year of release, oldest to newest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -399,13 +407,13 @@ int main(){
                     cout << "Here are the games sorted by their North American sales, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -435,13 +443,13 @@ int main(){
                     cout << "Here are the games sorted by their North American sales, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -477,13 +485,13 @@ int main(){
                     cout << "Here are the games sorted by their European sales, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -513,13 +521,13 @@ int main(){
                     cout << "Here are the games sorted by their European sales, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -555,13 +563,13 @@ int main(){
                     cout << "Here are the games sorted by their Japanese sales, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -591,13 +599,13 @@ int main(){
                     cout << "Here are the games sorted by their Japanese sales, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -633,13 +641,13 @@ int main(){
                     cout << "Here are the games sorted by their other sales, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -669,13 +677,13 @@ int main(){
                     cout << "Here are the games sorted by their other sales, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -711,13 +719,13 @@ int main(){
                     cout << "Here are the games sorted by their global sales, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -747,13 +755,13 @@ int main(){
                     cout << "Here are the games sorted by their global sales, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -789,13 +797,13 @@ int main(){
                     cout << "Here are the games sorted by their critics score, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -825,13 +833,13 @@ int main(){
                     cout << "Here are the games sorted by their critics score, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -867,13 +875,13 @@ int main(){
                     cout << "Here are the games sorted by their critic count, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -903,13 +911,13 @@ int main(){
                     cout << "Here are the games sorted by their critic count, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -945,13 +953,13 @@ int main(){
                     cout << "Here are the games sorted by their user score, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -981,13 +989,13 @@ int main(){
                     cout << "Here are the games sorted by their user score, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -1023,13 +1031,13 @@ int main(){
                     cout << "Here are the games sorted by their user count, greatest to least!" << endl;
                     int end = floatGames.size() - 1;
                     int ind_sub;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) { //Sets the cap number for the for loop
-                        ind_sub = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) { //Sets the cap number for the for loop
+                        ind_sub = cap_num;
                     } else {
                         ind_sub = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }
@@ -1059,13 +1067,13 @@ int main(){
                     cout << "Here are the games sorted by their user count, least to greatest!" << endl;
                     int end = floatGames.size() - 1;
                     int ind;
-                    if (stoi(cap_num) > 0 && stoi(cap_num) <= end) {
-                        ind = stoi(cap_num);
+                    if (cap_num > 0 && cap_num <= end) {
+                        ind = cap_num;
                     } else {
                         ind = end;
                     }
 
-                    if(stoi(cap_num) == 0){ //Cap number 0 shows no games
+                    if(cap_num == 0){ //Cap number 0 shows no games
                         cout << "No games shown." << endl;
                         continue;
                     }

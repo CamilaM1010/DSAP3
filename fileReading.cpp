@@ -81,102 +81,313 @@ int main(){
 //        cout << data[i].getName() << ";" << data[i].getPlatform() << ";" << data[i].getYear() << ";" << data[i].getGenre() << ";" << data[i].getPublisher() << ";" << data[i].getNAS() << ";" << data[i].getEUS() << ";" << data[i].getJPS() << ";" << data[i].getOTS() << ";" << data[i].getGBS() << ";" << data[i].getCriticS() << ";" << data[i].getCriticC() << ";" << data[i].getUserS() << ";" << data[i].getUserC() << ";" << data[i].getDeveloper() << ";" << data[i].getRating() << endl;
 //    }
 
-    int sortOption;
-    std::cout << "Welcome to the Video Game Analyzer Program, where we analyze a variety of unique video games and compare the data across each of them in order to analyze the video game market and order the data to the user's content!" << std::endl;
-    std::cout << "How would you like to sort the Video Games?\n1.Name 2.Platform 3.Year of Release 4.Genre\n5.Publisher 6.North American Sales 7.European Sales 8.Japanese Sales\n9.Other Sales 10.Global Sales 11.Critic Score 12.Critic Count\n13.User Score 14.User Count 15.Developer 16.Rating\nInput: ";
-    cin >> sortOption;
+    int sort_option;
+    char cap_games;
+    string cap_num = "-1";
+    std::cout << "-----------============================o0()0o==============================-----------\n"
+                 "Welcome to the Video Game Analyzer Program! We analyze a variety of unique video games\n"
+                 "and compare the data across each of them in order to analyze the video game market and\n"
+                 "                     order the data to the user's content!\n"
+                 "-----------============================o0()0o==============================-----------\n\n";
+    std::cout << "                    How would you like to sort the Video Games?\n\n"
+                 "               1.Name | 2.Year of Release | 3.North American Sales\n"
+                 "               4.European Sales | 5.Japanese Sales | 6.Other Sales\n"
+                 "                 7.Global Sales | 8.Critic Score | 9.Critic Count\n"
+                 "                           10.User Score | 11.User Count\n\n"
+                 "Input:";
+    cin >> sort_option;
 
-    if (sortOption >= 1 && sortOption <= 16){
+    //cout << "Got sort op" << endl;
+
+    if (sort_option >= 1 && sort_option <= 11){
         vector<string> games;
+        //cout << "Inside if" << endl;
         for (int i = 0; i < data.size(); i++){
-            if (sortOption == 1){
+            if (sort_option == 1){
                 games.push_back(data[i].getName());
             }
-            else if(sortOption == 2){
-                games.push_back(data[i].getPlatform());
-            }
-            else if(sortOption == 3){
+            else if(sort_option == 2){
                 games.push_back(data[i].getYear());
             }
-            else if(sortOption == 4){
-                games.push_back(data[i].getGenre());
-            }
-            else if(sortOption == 5){
-                games.push_back(data[i].getPublisher());
-            }
-            else if(sortOption == 6){
+            else if(sort_option == 3){
                 games.push_back(data[i].getNAS());
             }
-            else if(sortOption == 7){
+            else if(sort_option == 4){
                 games.push_back(data[i].getEUS());
             }
-            else if(sortOption == 8){
+            else if(sort_option == 5){
                 games.push_back(data[i].getJPS());
             }
-            else if(sortOption == 9){
+            else if(sort_option == 6){
                 games.push_back(data[i].getOTS());
             }
-            else if(sortOption == 10){
+            else if(sort_option == 7){
                 games.push_back(data[i].getGBS());
             }
-            else if(sortOption == 11){
+            else if(sort_option == 8){
                 games.push_back(data[i].getCriticS());
             }
-            else if(sortOption == 12){
+            else if(sort_option == 9){
                 games.push_back(data[i].getCriticC());
             }
-            else if(sortOption == 13){
+            else if(sort_option == 10){
                 games.push_back(data[i].getUserS());
             }
-            else if(sortOption == 14){
+            else if(sort_option == 11){
                 games.push_back(data[i].getUserC());
             }
-            else if(sortOption == 15){
-                games.push_back(data[i].getDeveloper());
-            }
-            else if(sortOption == 16){
-                games.push_back(data[i].getRating());
-            }
         }
+
+        //cout << "Ready to sort" << endl;
         int size = games.size();
         vector<string> games2 = games;
 
-        mergeSort sorter1;
-        quickSort sorter2;
+        mergeSort merge_sorter;
+        quickSort quick_sorter;
+        int counter = 1;
 
         vector<videoGame> data2;
         data2 = data;
-        cout << "Does Merge" << endl;
-        const clock_t clock_merge_start = clock();
-        sorter1.mergeSorterWords(games, 0, size - 1, data);
-        const clock_t clock_merge_end = clock();
-        cout << "No merge" << endl;
 
-        cout << "Does Quick" << endl;
+        const clock_t clock_merge_start = clock();
+        merge_sorter.mergeSorterWords(games, 0, size - 1, data);
+        const clock_t clock_merge_end = clock();
+        cout << "Merge sorted" << endl;
+
         const clock_t clock_quick_start = clock();
-        sorter2.quicksortWords(games2, games2.size(), data2);
+        quick_sorter.quicksortWords(games2, games2.size(), data2);
         const clock_t clock_quick_end = clock();
-        cout << "Does Quicke" << endl;
+        cout << "Quick sorted" << endl;
 
         float mergeTime = clock_merge_end - clock_merge_start;
         float quickTime = clock_quick_end - clock_quick_start;
 
-        if(mergeTime < quickTime) {
-            cout << "Merge Sort Printed the Following Data: " << endl;
-            for (int i = 0; i < games.size(); i++){
-                cout << data[i].getName() << endl;
+        cout << "Would you like to cap the amount of games we display?\nType 'y' or 'Y' for yes, anything else for no." << endl;
+        cin >> cap_games;
+
+        if(cap_games == 'y' or cap_games == 'Y'){
+            cout << "Enter the amount of games you would like to see sorted (as an int): " << endl;
+            cin >> cap_num;
+        }
+
+        if(sort_option == 1){
+            cout << "Here are the games sorted by their names in alphabetical order!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
             }
-            cout << fixed << setprecision(2) << "CPU time used: "
-                 << 1000.0 * (mergeTime) / CLOCKS_PER_SEC << " ms\n";
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japanese Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
         }
-        else if(mergeTime > quickTime){
-            cout << "Quick Sort Printed the Following Data: " << endl;
-            cout << fixed << setprecision(2) << "CPU time used: "
-                 << 1000.0 * (quickTime) / CLOCKS_PER_SEC << " ms\n";
+        else if(sort_option == 2){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their year of release!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japanese Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
         }
+        else if(sort_option == 3){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their North American sales!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japanese Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+        else if(sort_option == 4){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their European Sales!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japanese Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+        else if(sort_option == 5){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their Japanese sales!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japan Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+        else if(sort_option == 6){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their other sales!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japan Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+        else if(sort_option == 7){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their global sales!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){ //TODO IMPLEMENT
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japan Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+        else if(sort_option == 8){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their critic score!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japan Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+        else if(sort_option == 9){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their critic count!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japan Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+        else if(sort_option == 10){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their user score!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japan Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+        else if(sort_option == 11){ //TODO IMPLEMENT
+            cout << "Here are the games sorted by their user count!" << endl;
+            int end = games.size();
+            if(stoi(cap_num) >= 0 && stoi(cap_num) <= games.size()){
+                end = stoi(cap_num);
+            }
+
+            for (int i = 0; i < end; i++){
+                cout << "============------------__________------------============" << endl;
+                cout << "Game " << counter << ": " << data[i].getName() << endl;
+                cout << "Platform: " << data[i].getPlatform() << ", Year of Release: " << data[i].getYear() << ", Genre: " << data[i].getGenre() << endl;
+                cout << "Publisher: " << data[i].getPublisher() << ", North America Sales: " << data[i].getNAS() << ", European Sales: " << data[i].getEUS() << endl;
+                cout << "Japan Sales: " << data[i].getJPS() << ", Other Sales: " << data[i].getOTS() << ", Global Sales: " << data[i].getGBS() << endl;
+                cout << "Critic Score: " << data[i].getCriticS() << ", Critic Count: " << data[i].getCriticC() << ", User Score: " << data[i].getUserS() << endl;
+                cout << "User Count: " << data[i].getUserC() << ", Developer: " << data[i].getDeveloper() << ", Rating: " << data[i].getRating() << endl;
+                counter++;
+            }
+            cout << "============------------__________------------============" << endl;
+        }
+
+
+        cout << fixed << setprecision(2) << "CPU time used doing MergeSort: "
+             << 1000.0 * (mergeTime) / CLOCKS_PER_SEC << " ms\n";
+        cout << fixed << setprecision(2) << "CPU time used doing QuickSort: "
+             << 1000.0 * (quickTime) / CLOCKS_PER_SEC << " ms\n";
     }
     else{
-        std::cout << "Invalid option chosen!" << std::endl;
+        std::cout << "Invalid option chosen! Please try again." << std::endl;
         return 0;
     }
     return 0;
